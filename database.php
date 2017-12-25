@@ -36,3 +36,13 @@ function db_select($query){
     $con->close();
     return $data;
 }
+
+function db_update($query){
+    $con = db_connect();
+    $con->query($query);
+    $con->close();
+}
+
+function db_delete($query){
+    db_update($query);
+}
