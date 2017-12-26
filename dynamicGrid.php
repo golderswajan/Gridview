@@ -6,8 +6,7 @@
  * Time: 12:28 PM
  */
 include_once 'database.php';
-$relative_data = db_select("select * from identity");
-echo $relative_data[0]['name'];
+echo "";
 ?>
 
 
@@ -119,8 +118,8 @@ echo $relative_data[0]['name'];
                 $.post('jquery-process.php', {
                     generalUpdate : query
                 }, function (data) {
-                     label.html(input.val());
-                     //loadData();
+                     //label.html(input.val());
+                     loadData();
                 });
             }
 
@@ -177,7 +176,7 @@ echo $relative_data[0]['name'];
         table.myTable tr:nth-child(odd){
             background-color: #ffffff;
         }
-        .myTextarea
+        .myTextArea
         {
             display: none;
             width: 100%;
