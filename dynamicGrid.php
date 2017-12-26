@@ -43,8 +43,10 @@ echo $relative_data[0]['name'];
                     colomns.push(key);
                     editMethod[key] = false;
                 }
+                var colWidth= Math.round(93/(colomns.length-1));
+                console.log(colWidth);
                 for(var i=1;i<colomns.length;i++){
-                    rowHtml += "<th>"+jsUcFirst(colomns[i])+"</th>";
+                    rowHtml += "<th width='"+colWidth+"%'>"+jsUcFirst(colomns[i])+"</th>";
                 }
                 rowHtml +="<th>"+"Delete"+"</th>";
                 rowHtml +="</tr>";
@@ -52,14 +54,14 @@ echo $relative_data[0]['name'];
                 for(var i=0;i<info.length;i++){
                     rowHtml += "<tr>";
                     for(var j=1;j<colomns.length;j++){
-                        rowHtml += "<td ondblclick=\"editCell({row:'"+info[i][colomns[0]]+"',col:'"+colomns[j]+"'})\"><span id=\""+colomns[j]+"Label"+info[i][colomns[0]]+"\">"+info[i][colomns[j]]+"</span><input id=\""+colomns[j]+"Input"+info[i][colomns[0]]+"\"  value=\""+info[i][colomns[j]]+"\" hidden></td>";
+                        rowHtml += "<td ondblclick=\"editCell({row:'"+info[i][colomns[0]]+"',col:'"+colomns[j]+"'})\"><span id=\""+colomns[j]+"Label"+info[i][colomns[0]]+"\">"+info[i][colomns[j]]+"</span><textarea id=\""+colomns[j]+"Input"+info[i][colomns[0]]+"\"  class=\"myTextArea\" rows='1'>"+info[i][colomns[j]]+"</textarea></td>";
                     }
                     rowHtml += "<td><a href=\"#\" onclick=\"doDeleteFunction("+info[i][colomns[0]]+")\"><span class=\"glyphicon glyphicon-remove\"></span></a></td>";
                     rowHtml += "</tr>";
                 }
 
 
-                myTable.html(rowHtml);
+               myTable.html(rowHtml);
                 console.log(editMethod);
                 //editMethod.address=true;
 
@@ -161,8 +163,8 @@ echo $relative_data[0]['name'];
             border:1px solid black;
             border-collapse: collapse;
         }
-        .myTable th,td{
-            padding: 8px;
+        .myTable textarea,span{
+            padding: 6px;
             text-align: left;
         }
         .myTable th{
@@ -175,20 +177,26 @@ echo $relative_data[0]['name'];
         table.myTable tr:nth-child(odd){
             background-color: #ffffff;
         }
+        .myTextarea
+        {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
     <body>
 
         <table class="myTable">
 <!--            <tr>-->
-<!--                <th>Name</th>-->
-<!--                <th>Address</th>-->
-<!--                <th>Contact</th>-->
+<!--                <th width="31%">Name</th>-->
+<!--                <th width="31%">Address</th>-->
+<!--                <th width="31%">Contact</th>-->
 <!--                <th>Delete</th>-->
 <!--            </tr>-->
 <!---->
 <!--            <tr>-->
-                <td ondblclick="editCell({row:'1',col:'name'})"><span id="nameLabel1">Swajan</span><input id="nameInput1"  value="Swajan" hidden></td>
+<!--                <td ondblclick="editCell({row:'1',col:'name'})"><span id="nameLabel1">Swajan</span><textarea class="myTextarea" id="nameInput1"   rows="1" >Swajan</textarea></td>-->
 <!--                <td ondblclick="editCell({row:'1',col:'address'})"><span id="addressLabel1">Khulna</span><input id="addressInput1"  value="Khulna" hidden></td>-->
 <!--                <td id="contact1">01571777609</td>-->
 <!--                <td><a href="#" onclick="doDeleteFunction(1)"><span class="glyphicon glyphicon-remove"></span></a></td>-->
